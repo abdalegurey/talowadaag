@@ -50,6 +50,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            "image"=>['required','max:650'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -63,10 +64,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+       
+        $destinationPath = 'assets/img/';
+        $myimage = null;
+    
+        // Check if the image is present and is a file
+        if (isset($data['image']) && $data['image'] instanceof \Illuminate\Http\UploadedFile) {
+            $myimage = $data['image']->getClientOriginalName();
+            $data['image']->move(public_path($destinationPath), $myimage);
+        } else {
+            // Handle the error - image not present or invalid
+           echo "geli image";
+        }
+    
         return User::create([
             'name' => $data['name'],
+            'image' => $myimage,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+    
 }
