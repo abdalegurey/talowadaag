@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/writePosts', [App\Http\Controllers\HomeController::class, 'writeposts'])->name('writeposts');
+Route::post('/writePosts/{id}', [App\Http\Controllers\HomeController::class, 'create'])->name('create');
+
+
