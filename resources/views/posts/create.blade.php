@@ -42,8 +42,8 @@
                         <div class="row">
                             
                             <div class="col-lg-8 col-md-8">
-                                @foreach ($users as $user )
-                                <form action="{{route("create", $user->id)}}" method="post">
+                                
+                                <form action="{{route("create")}}" method="post">
                                     @csrf
                                     <div class="form-group">
                                         <textarea name="post" class="form-control" id="" cols="20" rows="20"></textarea>
@@ -52,7 +52,7 @@
                                     </div>
                                 </form>
                                     
-                                @endforeach
+                                
                               
                               
                                    

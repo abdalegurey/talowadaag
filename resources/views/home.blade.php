@@ -9,12 +9,7 @@
                 <div class="hero__items set-bg" data-setbg="{{asset("assets/img/recent-1.jpg")}}">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -44,18 +39,20 @@
                         <div class="row">
                             
                             <div class="col-lg-8 col-md-8">
+                            @foreach ($posts as $post )
                                
                                 <div class="anime__review__item">
+                              
                                     <div class="anime__review__item__pic">
-                                        <img src="img/anime/review-1.jpg" alt="">
+                                        <img src="{{asset("assets/img/$post->image")}}" alt="">
                                     </div>
                                     <div class="anime__review__item__text">
-                                        @foreach ($posts as $post )
-                                        <h6>Chris Curry - <span>1 Hour ago</span></h6>
+                                       
+                                        <h6>{{ $post->username }}- <span>{{ $post->created_at }}</span></h6>
                                         <p>{{ $post->post }}</p>
                                         <a href="">seemore..</a>
                                             
-                                        @endforeach
+                                       
                                         
                                         <div>
                                             <i class="fa fa-comments text-primary">11</i>
@@ -63,6 +60,7 @@
                                            </div>
                                     </div>
                                 </div>
+                                @endforeach
                                 
                             </div>
                         </div>

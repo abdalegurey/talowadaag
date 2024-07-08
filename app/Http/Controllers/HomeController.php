@@ -34,22 +34,23 @@ class HomeController extends Controller
         $users= post::select()->get();
         
         
-        return view("posts.create", compact("users"));
+        return view("posts.create");
     }
 
-    public function create(Request $request, $id){
+    public function create(Request $request){
         
 
         
         $Insertcomments= post::create([
-            "user_id"=>$id,
+           
             "post"=>$request->post,
             "image" =>Auth()->user()->image,
+            "username"=>Auth()->user()->name,
            
         ]);
 
         if($Insertcomments){
-          return redirect()->route("home", $id)->back();
+            return redirect("home");
           
 
         }
