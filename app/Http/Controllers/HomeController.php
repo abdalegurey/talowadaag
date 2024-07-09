@@ -37,6 +37,16 @@ class HomeController extends Controller
         return view("posts.create");
     }
 
+    public function showPost($post_id){
+
+        $post= post::find($post_id);
+
+        return view("posts.show", compact("post"));
+
+
+
+    }
+
     public function create(Request $request){
         
 

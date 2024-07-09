@@ -49,15 +49,15 @@
                                     <div class="anime__review__item__text">
                                        
                                         <h6>{{ $post->username }}- <span>{{ $post->created_at }}</span></h6>
-                                        <p>{{ $post->post }}</p>
-                                        <a href="">seemore..</a>
+                                        <p>{{ $limit_text($post->post, 150) }}</p>
+                                        <a class="text-light" href="{{route("showposts", $post->id)}}" style="text-decoration:none">seemore..</a>
                                             
                                        
                                         
-                                        <div>
-                                            <i class="fa fa-comments text-primary">11</i>
-                                            <i class="fa fa-eye text-primary">200</i>
-                                           </div>
+                                        <!-- <div>
+                                        <i class="fa fa-comments text-primary">11</i>
+                                        <i class="fa fa-eye text-primary float-end">200</i>
+                                       </div> -->
                                     </div>
                                 </div>
                                 @endforeach

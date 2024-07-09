@@ -21,8 +21,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// routes/web.php
+// routes/web.php
+
+
+
 
 Route::get('/writePosts', [App\Http\Controllers\HomeController::class, 'writeposts'])->name('writeposts');
 Route::post('/writePosts', [App\Http\Controllers\HomeController::class, 'create'])->name('create');
+
+Route::get('/writePosts/{post_id}', [App\Http\Controllers\HomeController::class, 'showPost'])->name('showposts');
 
 
