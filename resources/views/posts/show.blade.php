@@ -21,9 +21,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./categories.html">Categories</a>
-                        <span>Romance</span>
+                        <a href="{{route("home")}}"><i class="fa fa-home"></i> Home</a>
+                        <!-- <a href="./categories.html">Categories</a>
+                        <span>Romance</span> -->
                     </div>
                 </div>
             </div>
@@ -46,10 +46,13 @@
                                     <div class="anime__review__item__text">
                                         <h6>{{ $post->username }}- <span>{{ $post->created_at }}</span></h6>
                                         <p>{{ $post->post }}</p>
-                                       <div>
-                                        <i class="fa fa-comments text-primary">11</i>
-                                        <i class="fa fa-eye text-primary float-end">200</i>
-                                       </div>
+                                        <div class="container">
+                                     <div class="d-flex justify-content-between align-items-center">
+                                 <i class="fa fa-comments text-primary">{{ $numberofcomments }}</i>
+                                     <i class="fa fa-heart-o text-primary mx-auto"></i>
+                                 <i class="fa fa-eye text-primary">200</i>
+                             </div>
+                             </div>
                                             <!-- <div class="comment" style="color: white;"> 11</div>
                                             <div class="view"  style="color: white;"><i class="fa fa-eye"></i> 9141</div> -->
                                         
@@ -74,40 +77,59 @@
                                 <h5>Reviews</h5>
                             </div>
                            
+                            @foreach ($comments as $comment )
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-5.jpg" alt="">
+                                    <img src="{{asset("assets/img/$comment->image")}}" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
+                                    <h6>{{ $comment->user_name }}- <span>{{ $comment->created_at }}</span></h6>
+                                    <p>{{ $comment->comment }}</p>
                                 </div>
                             </div>
+                                
+                            @endforeach
+                           
                             
                         </div>
                         <div class="anime__details__form">
                             <div class="section-title">
                                 <h5>Your Comment</h5>
                             </div>
-                            <form action="#">
-                                <textarea placeholder="Your Comment"></textarea>
+                            <form action="{{route("insertComment", $post->id)}}" method="POST">
+                                @csrf
+                                <textarea name="comment" placeholder="Your Comment"></textarea>
                                 <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                             </form>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
-                        <div class="anime__details__sidebar">
-                            <div class="section-title">
-                                <h5>you might like...</h5>
+                    <h5 class="text-success">you might like...</h5>
+                            @foreach ($posts as $post )
+                               
+                                <div class="anime__review__item">
+                                    
+                              
+                                    <div class="anime__review__item__pic">
+                                        <img src="{{asset("assets/img/$post->image")}}" alt="">
+                                    </div>
+                                    <div class="anime__review__item__text">
+                                       
+                                        <h6>{{ $post->username }}- <span>{{ $post->created_at }}</span></h6>
+                                        <p>{{ $limit_text($post->post, 150) }}</p>
+                                        <a class="text-light" href="{{route("showposts", $post->id)}}" style="text-decoration:none">seemore..</a>
+                                            
+                                       
+                                        
+                                        <!-- <div>
+                                        <i class="fa fa-comments text-primary">11</i>
+                                        <i class="fa fa-eye text-primary float-end">200</i>
+                                       </div> -->
+                                    </div>
+                                </div>
+                                @endforeach
+                                
                             </div>
-                            <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-1.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Boruto: Naruto next generations</a></h5>
-                            </div>
-                            
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

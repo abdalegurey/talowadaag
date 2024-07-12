@@ -32,13 +32,13 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                    <!-- <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a> -->
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             
-                            <div class="col-lg-8 col-md-8">
+                            <div class="col-lg-10 col-md-8">
                             @foreach ($posts as $post )
                                
                                 <div class="anime__review__item">
@@ -73,7 +73,7 @@
                         <div class="product__sidebar__view">
         </div>
     </div>
-    <div class="product__sidebar__comment">
+    <!-- <div class="product__sidebar__comment">
         <div class="section-title">
             <h5>For You</h5>
         </div>
@@ -88,7 +88,7 @@
             </div>
         </div>
        
-    </div>
+    </div> -->
 </div>
 </div>
 </div>

@@ -31,5 +31,9 @@ Route::get('/writePosts', [App\Http\Controllers\HomeController::class, 'writepos
 Route::post('/writePosts', [App\Http\Controllers\HomeController::class, 'create'])->name('create');
 
 Route::get('/writePosts/{post_id}', [App\Http\Controllers\HomeController::class, 'showPost'])->name('showposts');
+Route::post('/insertComment/{id}', [App\Http\Controllers\HomeController::class, 'insertComment'])->name('insertComment');
+
+// Route::get('/readingcomments/{post_id}', [App\Http\Controllers\HomeController::class, 'readingcomment'])->name('readingComments');
+
 
 

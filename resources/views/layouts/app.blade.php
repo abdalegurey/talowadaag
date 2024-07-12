@@ -46,14 +46,7 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="">Homepage</a></li>
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                   
-                                        <li><a href="">name</a></li>
-                                            
-                                      
-                                    </ul>
-                                </li>
+                                
                             </ul>
                         </nav>
                     </div>
@@ -145,7 +138,7 @@
                 <div class="footer__nav">
                     <ul>
                         <li class="active"><a href="./index.html">Homepage</a></li>
-                        <li><a href="./categories.html">Categories</a></li>
+                        
                     </ul>
                 </div>
             </div>
