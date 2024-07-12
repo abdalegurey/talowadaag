@@ -44,7 +44,7 @@
                                         <img src="{{asset("assets/img/$post->image")}}" alt="">
                                     </div>
                                     <div class="anime__review__item__text">
-                                        <h6>{{ $post->username }}- <span>{{ $post->created_at }}</span></h6>
+                                        <h6>{{ $post->username }}- <span>{{ $post->created_at->format('d M Y - H:i:s') }}</span></h6>
                                         <p>{{ $post->post }}</p>
                                         <div class="container">
                                      <div class="d-flex justify-content-between align-items-center">

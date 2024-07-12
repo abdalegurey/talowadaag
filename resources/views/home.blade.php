@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="anime__review__item__text">
                                        
-                                        <h6>{{ $post->username }}- <span>{{ $post->created_at }}</span></h6>
+                                        <h6>{{ $post->username }}- <span>{{ $post->created_at->format('d M Y - H:i:s') }}</span></h6>
                                         <p>{{ $limit_text($post->post, 150) }}</p>
                                         <a class="text-light" href="{{route("showposts", $post->id)}}" style="text-decoration:none">seemore..</a>
                                             

@@ -34,7 +34,7 @@
                                         <img src="{{asset("assets/img/$showpost->post_image")}}" alt="">
                                     </div>
                                     <div class="anime__review__item__text">
-                                        <h6>{{ $showpost->post_username }} - <span>1 Hour ago</span></h6>
+                                        <h6>{{ $showpost->post_username }} - <span>{{ $showpost->created_at->format('d M Y - H:i:s') }}</span></h6>
                                         <p>{{ $limit_text($showpost->post_letter, 150) }}</p>
                                        <!-- <div>
                                         <i class="fa fa-comments text-primary">11</i>
