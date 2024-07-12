@@ -32,6 +32,9 @@ Route::post('/writePosts', [App\Http\Controllers\HomeController::class, 'create'
 
 Route::get('/writePosts/{post_id}', [App\Http\Controllers\HomeController::class, 'showPost'])->name('showposts');
 Route::post('/insertComment/{id}', [App\Http\Controllers\HomeController::class, 'insertComment'])->name('insertComment');
+Route::post('/Follow/{id}', [App\Http\Controllers\HomeController::class, 'follow'])->name('follow');
+
+Route::get('/likedshowspost', [App\Http\Controllers\Users\UserController::class, 'likedshowsposts'])->name('likedshowsposts')->middleware("auth:web");;
 
 // Route::get('/readingcomments/{post_id}', [App\Http\Controllers\HomeController::class, 'readingcomment'])->name('readingComments');
 

@@ -49,8 +49,8 @@
                                         <div class="container">
                                      <div class="d-flex justify-content-between align-items-center">
                                  <i class="fa fa-comments text-primary">{{ $numberofcomments }}</i>
-                                     <i class="fa fa-heart-o text-primary mx-auto"></i>
-                                 <i class="fa fa-eye text-primary">200</i>
+                                     <i class="fa fa-heart-o text-primary mx-auto">{{$numberoffollowing}}</i>
+                                 <i class="fa fa-eye text-primary">{{ $Numberviews }}</i>
                              </div>
                              </div>
                                             <!-- <div class="comment" style="color: white;"> 11</div>
@@ -59,7 +59,26 @@
                                        
                                     </div>
                                     <div class="anime__details__btn">
-                                        <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i>like this post</a>
+                                    @if (isset(Auth::user()->id))
+                                  
+                             
+                                  @if ($validatingFollowing>0)
+
+                                  <button type="submit" disabled class="follow-btn"><i class="fa fa-heart-o"></i> You Liked this Post</button>
+                                   @else
+                                    <form action="{{route("follow", $post->id)}}" method="post">
+                                        <input name="image" type="hidden" value='{{$post->image}}'>
+                                        <input name="username" type="hidden" value='{{$post->username}}'>
+                                        <input name="post" type="hidden" value='{{$post->post}}'>
+                                    @csrf
+
+                                    <!-- <input type="hidden" name="show_image" value="{{$post->image}}">
+                                    <input type="hidden" name="show_name" value="{{$post->post}}"> -->
+                                    <button type="submit" class="follow-btn"><i class="fa fa-heart-o"></i> Like</button>
+                                     </form>
+
+                                     @endif
+                                     @endif
                                         
                                         </div>
                                 </div>

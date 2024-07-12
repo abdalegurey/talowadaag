@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\posts\post;
+use App\Models\views\views;
 use Illuminate\Http\Request;
 use App\Models\Comment\Comment;
+use App\Models\following\following;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -46,9 +48,50 @@ class HomeController extends Controller
         $numberofcomments=comment::where("post_id",$post_id)->count();
         $comments= Comment::select()->orderBy("id","desc")->where("post_id",$post_id)->get();
         $posts= post::select()->orderBy("id","desc")->where('id', '!=' ,$post_id)->get();
+        $numberoffollowing=following::where("post_id",$post_id)->count();
+        $Numberviews=views::where("post_id",$post_id)->count();
+        
+        //getiing new views
+        if(isset(Auth::user()->id)){
+            // validating views
+        $validatingviews=views::where('user_id',Auth::user()->id)->where("post_id",$post_id)->count();
+        if($validatingviews==0){
+            $views=views::create([
+                "post_id"=>$post_id,
+                "user_id"=>Auth::user()->id,
+            ]);
+        }
+        }
+        if(isset(Auth::user()->id)){
+            //validating following
+            $validatingFollowing=following::where('user_id',Auth::user()->id)->where("post_id",$post_id)->count();
+
+        }
        
 
-        return view("posts.show", compact("post", "comments","numberofcomments", "posts"));
+        return view("posts.show", compact("post", "comments","numberofcomments", "posts", "validatingFollowing", "numberoffollowing", "Numberviews"));
+
+
+
+    }
+
+    public function follow(Request $request, $id){
+        $follow=following::create([
+
+            "post_id"=>$id,
+            "user_id"=>Auth::user()->id,
+             "post_image"=>$request->image,
+             "post_username"=>$request->username,
+             "post_letter"=>$request->post,
+
+           
+
+        ]);
+
+        if($follow){
+            return redirect()->back();
+
+        }
 
 
 
@@ -100,5 +143,8 @@ class HomeController extends Controller
         return redirect()->back();
 
     }
+
+
+   
 
 }

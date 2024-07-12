@@ -78,9 +78,9 @@
                                
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{route("likedshowsposts")}}">
                                       
-                                        Your Followed shows
+                                        Your liked post shows
                                     </a>
                                      <a class="dropdown-item" href="{{route("writeposts")}}">
                                       
