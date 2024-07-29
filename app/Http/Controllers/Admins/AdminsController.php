@@ -78,4 +78,17 @@ class AdminsController extends Controller
 
         return view("admins.createAdmins", compact("storeAdmin"));
     }
+
+    public function Allposts(){
+        $posts=post::all();
+        return view('admins.posts', compact('posts'));
+
+    }
+
+
+    public function deletePosts($id){
+        $posts=post::find($id);
+        $posts->delete();
+        return redirect()->back();
+    }
 }

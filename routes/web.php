@@ -62,11 +62,15 @@ Route::post('/createAdmins', [App\Http\Controllers\Admins\AdminsController::clas
 
 //posts
 
+Route::get('/AllPosts', [App\Http\Controllers\Admins\AdminsController::class, 'Allposts'])->name('admins.posts');
+Route::get('/Allposts/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'deletePosts'])->name('posts.delete');
+
 
 
 
 
 
 //comments
+
 
 });
