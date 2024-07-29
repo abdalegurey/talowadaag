@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admins\AdminsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,16 @@ Route::get('/likedshowspost', [App\Http\Controllers\Users\UserController::class,
 
 
 
+//Adminpanel
+
+Route::get('admin/login', [App\Http\Controllers\Admins\AdminsController::class, 'viewlogin'])->name('view.login')->middleware("CheckForAuth");
+
+Route::post('admin/login', [App\Http\Controllers\Admins\AdminsController::class, 'checklogin'])->name('check.login');
+
+
+Route::get('admin/register', [App\Http\Controllers\Admins\AdminsController::class, 'viewregister'])->name('view.register');
+
+Route::group(["prefix"=>'admin', 'middleware'=>'auth:admin'], function(){
+Route::get('index', [App\Http\Controllers\Admins\AdminsController::class, 'index'])->name('admins.dashboard');
+
+});
