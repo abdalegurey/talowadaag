@@ -71,6 +71,7 @@ Route::get('/Allposts/{id}', [App\Http\Controllers\Admins\AdminsController::clas
 
 
 //comments
-
+Route::get('/AllComments', [App\Http\Controllers\Admins\AdminsController::class, 'Allcomments'])->name('admins.comments');
+Route::get('/AllComments/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'deleteComments'])->name('comment.delete');
 
 });

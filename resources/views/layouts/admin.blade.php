@@ -36,7 +36,7 @@
             <a class="nav-link" href="{{route("admins.posts")}}" style="margin-left: 20px;">Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="genres-admins/show-genres.html" style="margin-left: 20px;">Comments</a>
+            <a class="nav-link" href="{{route("admins.comments")}}" style="margin-left: 20px;">Comments</a>
           </li>
          
         </ul>

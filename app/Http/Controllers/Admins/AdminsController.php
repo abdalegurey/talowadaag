@@ -91,4 +91,16 @@ class AdminsController extends Controller
         $posts->delete();
         return redirect()->back();
     }
+
+    public function Allcomments(){
+        $Comments=Comment::all();
+        return view('admins.comments', compact('Comments'));
+
+    }
+
+    public function deleteComments($id){
+        $comments=Comment::find($id);
+        $comments->delete();
+        return redirect()->back();
+    }
 }
