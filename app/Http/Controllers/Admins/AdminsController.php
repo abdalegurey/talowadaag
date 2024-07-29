@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Models\posts\post;
+use App\Models\Admin\Admin;
 use App\Models\views\views;
 use Illuminate\Http\Request;
 use App\Models\Comment\Comment;
 use App\Models\following\following;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminsController extends Controller
 {
@@ -46,5 +49,33 @@ class AdminsController extends Controller
         }
         return redirect()->back()->with(['error' => 'error logging in']);
 
+    }
+
+
+    public function Alladmin(){
+        $admins=Admin::all();
+        return view('admins.alladmin', compact('admins'));
+    }
+
+
+    public function createAdmins(){
+
+        return view("admins.createAdmins");
+    }
+
+    public function storeAdmins(Request $request){
+
+        $storeAdmin=Admin::create([
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "password"=> Hash::make($request->password),
+        ]);
+
+        if($storeAdmin){
+           return  Redirect::route("admins.all");
+        }
+
+
+        return view("admins.createAdmins", compact("storeAdmin"));
     }
 }
