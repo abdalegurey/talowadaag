@@ -53,6 +53,25 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
+## Talaabooyinka aad wax ugu dari kartid project-gan
+
+  - Ugu horayn Fork dheh adigoo xaga sare ee geeska midig ku arkaya calaamada fargeetadda.
+  - Kedib hadi aad Git ku isticmaashid computer-kaaga clone garayso ama copy ka samayso.
+  - Branch ama laan la dhaho **contribution/{magacaaga}** ka samayso
+  - **developers.md** fur kedibna meel dhexda ah magacaaga kudar **(NB:hakudarin magacaaga meesha ugu horaysa ama ugu danbeysa, sidoo kale dadka xogtooda waxba haka bedelin)** -
+  -
+
+
+  ## English
+  1. Fork the repo
+  2. Clone your fork
+  3. Create a branch eg. contribution/yourname
+  4. edit contributors.md file and add your name in the middle to prevent merge conflicts
+  5. stage your changes using `git add .`
+  6. Comiit your changes using this commit template `Add {yourname} to developers list`
+  7. Push your changes to your fork with `git push`
+  8. Create a pull request 🎉 🎊
+
 ## Code of Conduct
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
