@@ -49,6 +49,26 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[byte5](https://byte5.de)**
 - **[OP.GG](https://op.gg)**
 
+# Psu Developers
+
+Project-ga ujeedkiisu waa in qof walba oo jamacada psu ah gaar ahaan semester 9 uu ka qayb qaato. isagoo ku hormarinayaa xirfadisa coding 
+
+# luuqadaha aan istcimaalay
+
+- Html
+
+
+
+## Faa-iidooyinka uu bulshadeena u lee yahay waxaa kamid ah
+  - Hadii aadan weligaa project contribute garayn ,haseyeeshee aad github isticmaali jirtay tani  noqon doonto ka qaybqaadashadaadii u horeysay.
+  - In dadka isku xirfadda ah ay sifudud isu heli karaan
+  - In qof walba uu wax ku darsan karo ,khaasatan xogtiisa.
+
+
+Markii hore ujeedku wuxuu ahaa in lagu tijaabiyo  kooras Afsommali ku baxaya oo lagu baranayo Git iyo Github sida ay u shaqeeyaan.
+
+This project aims to simplify and guide the way beginners make their first contribution. If you are looking to make your first contribution, follow the steps below.
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
