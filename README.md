@@ -56,7 +56,9 @@ Project-ga ujeedkiisu waa in qof walba oo jamacada psu ah gaar ahaan semester 9 
 # luuqadaha aan istcimaalay
 
 - Html
-
+- css
+- bootstrap
+-php framework called LARAVEL
 
 
 ## Faa-iidooyinka uu bulshadeena u lee yahay waxaa kamid ah
