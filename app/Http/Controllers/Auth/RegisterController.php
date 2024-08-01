@@ -46,11 +46,20 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
+    //     ]);
+    // }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            "image"=>['required','max:650'],
+            "image"=>['required','max:2950'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -62,27 +71,32 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    // protected function create(array $data)
+    // {
+    //     return User::create([
+    //         'name' => $data['name'],
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //     ]);
+    // }
+
     protected function create(array $data)
-    {
-       
-        $destinationPath = 'assets/img/';
-        $myimage = null;
-    
-        // Check if the image is present and is a file
-        if (isset($data['image']) && $data['image'] instanceof \Illuminate\Http\UploadedFile) {
-            $myimage = $data['image']->getClientOriginalName();
-            $data['image']->move(public_path($destinationPath), $myimage);
-        } else {
-            // Handle the error - image not present or invalid
-           echo "geli image";
-        }
-    
-        return User::create([
-            'name' => $data['name'],
-            'image' => $myimage,
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+{
+    $destinationPath = 'assets/img/';
+    $myimage = 'default_image.jpg'; // Ensure this file exists in your assets/img/ directory
+
+    // Check if the image is present and is a file
+    if (isset($data['image']) && $data['image'] instanceof \Illuminate\Http\UploadedFile) {
+        $myimage = $data['image']->getClientOriginalName();
+        $data['image']->move(public_path($destinationPath), $myimage);
     }
-    
+
+    return User::create([
+        'name' => $data['name'],
+        'image' => $myimage,
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+    ]);
+}
+
 }

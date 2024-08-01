@@ -1,13 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+
+<section class="hero " style="margin-top: -75px;background-color:#0b0c2a;">
+        <div class="container-fluid">
+            <div class="hero__slider owl-carousel">
+               
+              
+                <div class="hero__items set-bg" data-setbg="{{asset("assets/img/recent-1.jpg")}}">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <section class="hero"  style="margin-top: -75px;background-color:#0b0c2a;">
         <div class="container-fluid">
             <div class="hero__slider owl-carousel">
                
               
                 <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <div class="label">Adventure</div>
@@ -16,7 +32,7 @@
                                 <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

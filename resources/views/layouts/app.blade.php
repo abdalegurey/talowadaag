@@ -58,10 +58,15 @@
                     @guest
                 <ul>
                             @if (Route::has('login'))
+                            
                                 <li class="nav-item">
                                     <a style="margin-right:100px" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
+
+                                
                             @endif
+
+                            
 <!-- 
                             @if (Route::has('register'))
                                 <li class="nav-item">
@@ -78,15 +83,15 @@
                                
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route("likedshowsposts")}}">
+                                    <a class="dropdown-item text-primary" href="{{route("likedshowsposts")}}">
                                       
                                         Your liked post shows
                                     </a>
-                                     <a class="dropdown-item" href="{{route("writeposts")}}">
+                                     <a class="dropdown-item text-primary" href="{{route("writeposts")}}">
                                       
                                         WritePosts
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item text-primary" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mx-aut" style="height:100vh; margin-top:70px">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
