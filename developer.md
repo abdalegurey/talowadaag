@@ -1,3 +1,3 @@
 # Developers / Contributers
 
-- [Gurey](https://github.com/abdalegurey/)
+- [c/lahi Gurey][Gurey](https://github.com/abdalegurey/)
