@@ -8,6 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./cdn.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
@@ -44,10 +48,30 @@
                 <div class="col-lg-8">
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class="active"><a href="">Homepage</a></li>
-                                
-                            </ul>
+                            
+                        <div class="d-flex justify-content-end">
+
+    <ul class="nav">
+        @guest
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}" style="text-decoration:none">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}" style="text-decoration:none">Login</a>
+        </li>
+            
+        @endguest
+
+        @auth
+                                <li class="active"><a href="{{route("home")}}">Homepage</a></li>
+                                    
+                                @endauth
+
+    </ul>
+</div>
+
+
+                            
                         </nav>
                     </div>
                 </div>
@@ -57,14 +81,7 @@
 
                     @guest
                 <ul>
-                            @if (Route::has('login'))
-                            
-                                <li class="nav-item">
-                                    <a style="margin-right:100px" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-
-                                
-                            @endif
+                          
 
                             
 <!-- 
@@ -77,7 +94,7 @@
                            
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle mt-0w" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
                                
@@ -122,13 +139,17 @@
         </div>
     </header>
 
-        <main class="py-4">
+       
+    </div>
+
+    <div>
+    <main class="py-4" style="background-color:white">
             @yield('content')
         </main>
     </div>
 
 
-    <footer class="footer">
+    <footer class="footer" style="">
     <div class="page-up">
         <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
     </div>

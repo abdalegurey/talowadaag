@@ -23,7 +23,7 @@ class AdminsController extends Controller
 
     public function viewregister(){
 
-        return view('admins.register');
+        return view('admins.createAdmins');
     }
 
     public function index(){

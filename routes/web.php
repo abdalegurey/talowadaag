@@ -48,16 +48,19 @@ Route::get('admin/login', [App\Http\Controllers\Admins\AdminsController::class, 
 Route::post('admin/login', [App\Http\Controllers\Admins\AdminsController::class, 'checklogin'])->name('check.login');
 
 
-Route::get('admin/register', [App\Http\Controllers\Admins\AdminsController::class, 'viewregister'])->name('view.register');
+
+
 
 Route::group(["prefix"=>'admin', 'middleware'=>'auth:admin'], function(){
 Route::get('index', [App\Http\Controllers\Admins\AdminsController::class, 'index'])->name('admins.dashboard');
 
+
 //admin
 
-Route::get('/AllAdmins', [App\Http\Controllers\Admins\AdminsController::class, 'Alladmin'])->name('admins.all');
+Route::get('/AllAdmins', [App\Http\Controllers\Admins\Antroller::class, 'Alladmin'])->name('admins.all');
 Route::get('/createAdmins', [App\Http\Controllers\Admins\AdminsController::class, 'createAdmins'])->name('admins.create');
 Route::post('/createAdmins', [App\Http\Controllers\Admins\AdminsController::class, 'storeAdmins'])->name('admins.store');
+
 Route::get('/Alladmin/{id}', [App\Http\Controllers\Admins\AdminsController::class, 'deleteAdmin'])->name('admins.delete');
 
 

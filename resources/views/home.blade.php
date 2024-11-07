@@ -19,7 +19,7 @@
     <!-- Hero Section End -->
 
     <!-- Product Section Begin -->
-    <section class="product spad " style="background-color:#0b0c2a">
+    <section class="product spad" style="background-color:#0b0c2a">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
