@@ -57,7 +57,7 @@ Route::get('index', [App\Http\Controllers\Admins\AdminsController::class, 'index
 
 //admin
 
-Route::get('/AllAdmins', [App\Http\Controllers\Admins\Antroller::class, 'Alladmin'])->name('admins.all');
+Route::get('/AllAdmins', [App\Http\Controllers\Admins\AdminsController::class, 'Alladmin'])->name('admins.all');
 Route::get('/createAdmins', [App\Http\Controllers\Admins\AdminsController::class, 'createAdmins'])->name('admins.create');
 Route::post('/createAdmins', [App\Http\Controllers\Admins\AdminsController::class, 'storeAdmins'])->name('admins.store');
 

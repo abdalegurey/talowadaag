@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./cdn.css">
@@ -29,115 +31,124 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <style>
+        .accordion-button {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease-in-out;
+}
+
+.accordion-button:hover {
+    background-color: #eef2ff;
+    color: #0d6efd;
+}
+
+.accordion-item {
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
-    <header class="header" style="padding-bottom:50px">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="">
-                            <img src="" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            
-                        <div class="d-flex justify-content-end">
+    <header class="header bg-dark text-white py-3">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-6 col-md-2">
+                <a href="/" class="text-white text-decoration-none" style="font-size: 1.5rem; font-weight: bold;">
+                    TaloWadaag
+                </a>
+            </div>
 
-    <ul class="nav">
-        @guest
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}" style="text-decoration:none">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}" style="text-decoration:none">Login</a>
-        </li>
-            
-        @endguest
-
-        @auth
-                                <li class="active"><a href="{{route("home")}}">Homepage</a></li>
-                                    
-                                @endauth
-
-    </ul>
-</div>
-
-
-                            
-                        </nav>
-                    </div>
-                </div>
-
-                <div class="col-lg-2">
-                    <div class="header__right">
-
-                    @guest
-                <ul>
-                          
-
-                            
-<!-- 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif -->
-
-                           
+            <!-- Navigation -->
+            <div class="col-6 col-md-10">
+                <nav class="d-none d-md-flex justify-content-end">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="{{route("home")}}" class="nav-link text-white" href="#about">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#services">Adeegyadeena</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#testimonials">Ra'yiga Dadka</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact">Nala Soo Xiriir</a>
+                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('register') }}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
+                            </li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle mt-0w" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }}
                                 </a>
-                               
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item text-primary" href="{{route("likedshowsposts")}}">
-                                      
-                                        Your liked post shows
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="{{ route('likedshowsposts') }}">Your liked posts</a>
+                                    <a class="dropdown-item" href="{{ route('writeposts') }}">Write Posts</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" 
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
                                     </a>
-                                     <a class="dropdown-item text-primary" href="{{route("writeposts")}}">
-                                      
-                                        WritePosts
-                                    </a>
-                                    <a class="dropdown-item text-primary" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
-                       
-              
-               @endguest
-               </ul>
-              
-                        <!-- <a href="#" class="search-switch"><span class="icon_search"></span></a> -->
-                        <!-- <a href="./login.html"><span class="icon_profile"></span></a> -->
-                    </div>
+                        @endguest
+                    </ul>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="d-md-none text-end">
+                    <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-expanded="false">
+                        <i class="fa fa-bars"></i>
+                    </button>
                 </div>
-                <!-- <div class="col-lg-2">
-                    <div class="header__right">
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="./login.html"><span class="icon_profile"></span></a>
-                    </div>
-                </div> -->
             </div>
-            <div id="mobile-menu-wrap"></div>
         </div>
-    </header>
+
+        <!-- Mobile Menu -->
+        <div class="collapse" id="mobileMenu">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="{{route("home")}}" class="nav-link text-white" href="#about">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#services">Adeegyadeena</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#testimonials">Ra'yiga Dadka</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#contact">Nala Soo Xiriir</a></li>
+                @guest
+                    <li class="nav-item"><a class="nav-link text-white" href="{{ route('register') }}">Register</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{{ route('login') }}">Login</a></li>
+                @else
+                    <li class="nav-item"><a class="nav-link text-white" href="{{ route('likedshowsposts') }}">Your liked posts</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{{ route('writeposts') }}">Write Posts</a></li>
+                    <li class="nav-item">
+                         <a class="dropdown-item" href="{{ route('logout') }}" 
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form></li>
+                @endguest
+            </ul>
+        </div>
+    </div>
+</header>
+
+
 
        
     </div>
@@ -149,34 +160,46 @@
     </div>
 
 
-    <footer class="footer" style="">
-    <div class="page-up">
-        <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-    </div>
+    <footer class="footer bg-dark text-white py-4">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
-                <div class="footer__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                </div>
+            <!-- About Us Section -->
+            <div class="col-md-4 col-12 mb-3">
+                <h5 class="text-uppercase">Ku Saabsan</h5>
+                <p>
+                    TaloWadaag waa madal loogu talagalay ardayda si ay u wadaagaan fikradaha iyo waxbarashada faa’iidada leh.
+                </p>
             </div>
-            <div class="col-lg-6">
-                <div class="footer__nav">
-                    <ul>
-                        <li class="active"><a href="./index.html">Homepage</a></li>
-                        
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 
-              </div>
-          </div>
-      </div>
-  </footer>
+            <!-- Quick Links -->
+            <div class="col-md-4 col-12 mb-3">
+                <h5 class="text-uppercase">Xiriirada Degdegga ah</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{{route("home")}}" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="#services" class="text-white text-decoration-none">Adeegyadeena</a></li>
+                    <li><a href="#testimonials" class="text-white text-decoration-none">Ra'yiga Dadka</a></li>
+                    <li><a href="#contact" class="text-white text-decoration-none">Nala Soo Xiriir</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Us -->
+            <div class="col-md-4 col-12">
+                <h5 class="text-uppercase">Nala Soo Xiriir</h5>
+                <p>
+                    <i class="fa fa-map-marker-alt"></i> Galka'ayo, Soomaaliya <br>
+                    <i class="fa fa-envelope"></i> support@talowadaag.com <br>
+                    <i class="fa fa-phone"></i> +252-0906852289
+                </p>
+            </div>
+        </div>
+        <hr class="my-3">
+        <div class="text-center">
+            <p class="mb-0">&copy; 2024 TaloWadaag. Dhammaan Xuquuqda Waa Leedahay.</p>
+        </div>
+    </div>
+</footer>
+
+
   <!-- Footer Section End -->
 
   <!-- Search model Begin -->

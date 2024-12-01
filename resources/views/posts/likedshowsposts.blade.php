@@ -3,19 +3,7 @@
 @section('content')
 
   <!-- Breadcrumb Begin -->
-  <div class="breadcrumb-option" style="background-color:#0b0c2a; margin-top:-25px">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__links">
-                        <a href="{{route("home")}}"><i class="fa fa-home"></i> Home</a>
-                        <!-- <a href="./categories.html">Categories</a>
-                        <span>Romance</span> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Breadcrumb End -->
 
     <!-- Anime Section Begin -->
